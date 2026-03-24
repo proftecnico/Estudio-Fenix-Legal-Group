@@ -76,15 +76,14 @@ function handleUserInput() {
     let val = chatInput.value.trim();
     
     // In case of special date-time pickers replacing the input
-    const dateInput = document.getElementById('chat-date');
-    const timeInput = document.getElementById('chat-time');
+    const datetimeInput = document.getElementById('chat-datetime');
     
-    if (chatStep === 4 && dateInput && timeInput) {
-        if(!dateInput.value || !timeInput.value){
+    if (chatStep === 4 && datetimeInput) {
+        if(!datetimeInput.value){
            appendBotMessage("Por favor, seleccione una fecha y hora válidas.");
            return;
         }
-        val = dateInput.value + " a las " + timeInput.value;
+        val = datetimeInput.value.replace(" ", " a las ");
     } else if (!val) {
         return;
     }
@@ -199,41 +198,31 @@ function enableCustomInput() {
     const old = document.getElementById('custom-input-container');
     if(old) old.remove();
 
-    // Limit previous dates
-    const today = new Date();
-    const offset = today.getTimezoneOffset();
-    const localToday = new Date(today.getTime() - (offset*60*1000));
-    const minDate = localToday.toISOString().split('T')[0];
-
     const container = document.createElement("div");
     container.id = "custom-input-container";
     container.className = "datetime-container";
     container.innerHTML = `
-        <input type="date" id="chat-date" min="${minDate}" required title="De lunes a viernes">
-        <input type="time" id="chat-time" min="10:00" max="17:00" required title="De 10:00 a 17:00 hs">
+        <input type="text" id="chat-datetime" placeholder="Seleccione fecha y hora..." required readonly>
     `;
     
     inputArea.insertBefore(container, sendBtn);
     sendBtn.disabled = false;
 
-    // Validations to restrict selection automatically
-    const dateInput = document.getElementById('chat-date');
-    dateInput.addEventListener('change', function() {
-        if (!this.value) return;
-        const day = new Date(this.value).getUTCDay();
-        if(day === 0 || day === 6){
-            alert("Las entrevistas solo pueden agendarse de Lunes a Viernes.");
-            this.value = '';
-        }
-    });
-
-    const timeInput = document.getElementById('chat-time');
-    timeInput.addEventListener('change', function() {
-        if (!this.value) return;
-        if(this.value < "10:00" || this.value > "17:00") {
-            alert("El horario de atención es de 10:00 a 17:00 hs.");
-            this.value = '';
-        }
+    // Initialize Flatpickr
+    flatpickr("#chat-datetime", {
+        enableTime: true,
+        dateFormat: "d/m/Y H:i",
+        minDate: "today",
+        minTime: "10:00",
+        maxTime: "17:00",
+        disable: [
+            function(date) {
+                // Return true to disable weekends
+                return (date.getDay() === 0 || date.getDay() === 6);
+            }
+        ],
+        locale: "es",
+        minuteIncrement: 30
     });
 }
 

@@ -687,12 +687,18 @@ footer {
 /* DateTime input styling specifically inside widget */
 .datetime-container {
     display: flex;
-    gap: 5px;
     width: 100%;
 }
 .datetime-container input {
-    padding: 5px !important;
-    font-size: 0.8rem !important;
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem !important;
+    font-family: var(--font-body);
+    outline: none;
+    width: 100%;
+    color: var(--text-main);
 }
 
 /* Responsive */
