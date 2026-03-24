@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenix Legal | Estudio Jurídico</title>
+    <meta name="description" content="Fenix Legal Abogados. Excelencia y compromiso en representación legal. Agende su entrevista hoy mismo.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="491460715_564298499509133_7049928877030827484_n.jpg" alt="Fénix Legal Logo" class="logo-img">
+                <span class="logo-text">Fénix Legal</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto" class="btn-primary-outline">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge fade-in-up">Excelencia y Compromiso</div>
+            <h1 class="fade-in-up delay-1">Defendemos tus derechos con <span class="highlight">estrategia y determinación</span>.</h1>
+            <p class="fade-in-up delay-2">Un equipo de expertos legales listos para representarte. Litigios, asesoría corporativa y resolución de conflictos.</p>
+            <div class="hero-buttons fade-in-up delay-3">
+                <button class="btn-primary" onclick="window.toggleChat()">Agendar Entrevista <i class="fa-solid fa-calendar-check"></i></button>
+                <a href="#servicios" class="btn-secondary">Nuestros Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="section-header">
+            <h2>Áreas de Práctica</h2>
+            <p>Especialistas en diversas ramas del derecho para brindarle una solución integral.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Derecho Corporativo</h3>
+                <p>Asesoría integral para empresas, contratos, sociedades comerciales y compliance.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-gavel"></i></div>
+                <h3>Litigios y Resolución</h3>
+                <p>Representación judicial estratégica en conflictos civiles y comerciales.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
+                <h3>Derecho de Familia</h3>
+                <p>Manejo sensible y profesional de divorcios, sucesiones y acuerdos familiares.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-person-digging"></i></div>
+                <h3>Derecho Laboral</h3>
+                <p>Defensa de derechos laborales, indemnizaciones, y asesoría preventiva a empleadores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / About Section -->
+    <section id="nosotros" class="about-cta">
+        <div class="cta-content">
+            <h2>La experiencia hace la diferencia</h2>
+            <p>En Fénix Legal Abogados, entendemos que cada caso es único. Nuestro enfoque personalizado y nuestra dedicación incansable aseguran que sus intereses estén siempre protegidos.</p>
+            <button class="btn-primary-outline" onclick="window.toggleChat()">Hable con un profesional</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="491460715_564298499509133_7049928877030827484_n.jpg" alt="Fénix Legal Logo" class="logo-img">
+                    <span class="logo-text" style="color:white;">Fénix Legal</span>
+                </div>
+                <p>Su estudio jurídico de confianza. Resultados reales con vocación de servicio.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p><i class="fa-solid fa-envelope"></i> info@fenixlegal.com</p>
+                <p><i class="fa-solid fa-phone"></i> +54 11 1234-5678</p>
+                <p><i class="fa-solid fa-location-dot"></i> Av. Corrientes 1234, CABA</p>
+            </div>
+            <div class="footer-col">
+                <h4>Síganos</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/fenixlegal.abogados/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fénix Legal Abogados. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <!-- Chat Launcher Button -->
+        <button id="chat-launcher" class="chat-launcher pulse-animation" onclick="toggleChat()">
+            <i class="fa-solid fa-comment-dots"></i>
+            <i class="fa-solid fa-xmark close-icon"></i>
+            <span class="notification-badge">1</span>
+        </button>
+
+        <!-- Chat Window -->
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <h4>Asistente Virtual</h4>
+                        <span class="status-online">En línea</span>
+                    </div>
+                </div>
+                <button class="minimize-btn" onclick="toggleChat()"><i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages will be injected here via JS -->
+            </div>
+            
+            <div class="chat-input-area">
+                <div id="input-container" class="input-container">
+                    <input type="text" id="chat-input" placeholder="Escriba su mensaje..." autocomplete="off" disabled>
+                    <button id="chat-send-btn" disabled><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Application -->
+    <script src="app.js"></script>
+</body>
+</html>
