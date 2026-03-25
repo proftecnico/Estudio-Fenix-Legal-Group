@@ -64,10 +64,10 @@ function setupChatLogic() {
 }
 
 function startConversation() {
-    appendBotMessage("¡Hola! Bienvenido a Fénix Legal Abogados. Soy tu asistente virtual.");
+    appendBotMessage("Fénix Legal Group");
     setTimeout(() => {
-        appendBotMessage("Para agendar una entrevista con uno de nuestros profesionales, primero necesito algunos datos. ¿Cuál es su nombre completo?");
-        enableInput("text", "Escriba su nombre...");
+        appendBotMessage("¿Cuál es su apellido y nombre completo?");
+        enableInput("text", "Su apellido y nombre...");
         chatStep = 1;
     }, 1000);
 }
@@ -107,13 +107,13 @@ function processStep(value) {
     switch (chatStep) {
         case 1:
             userData.name = value;
-            appendBotMessage(`Gracias, ${userData.name.split(' ')[0]}. ¿Cuál es su correo electrónico y/o número de teléfono para contactarlo?`);
-            enableInput("text", "Su email o teléfono...");
+            appendBotMessage("Indique su número de teléfono y/o correo electrónico");
+            enableInput("text", "Su teléfono o email...");
             chatStep = 2;
             break;
         case 2:
             userData.contact = value;
-            appendBotMessage("Perfecto. Brevemente, ¿cuál es el motivo de su consulta? (Ej: Laboral, Familia, Contrato comercial)");
+            appendBotMessage("¡Gracias por confiar en Fénix Legal Group!<br><br>¿Cuál es su motivo de consulta: laboral despidos, laboral ART, familia, penal, accidente de tránsito, contratos, compra y venta de inmueble, etc.?");
             enableInput("text", "Motivo de la consulta...");
             chatStep = 3;
             break;
@@ -275,7 +275,7 @@ async function submitToFormSubmit() {
 
 function showSuccessMessage() {
     chatStep = 6;
-    appendBotMessage(`<b>¡Entrevista agendada con éxito!</b><br>Hemos enviado los detalles a nuestra firma. Nos pondremos en contacto a la brevedad para confirmar la disponibilidad para el <i>${userData.datetime}</i>.<br><br>¡Gracias por confiar en Fénix Legal!`);
+    appendBotMessage(`<b>¡Entrevista agendada con éxito!</b><br>Hemos enviado los detalles a nuestra firma. Nos pondremos en contacto a la brevedad para confirmar la disponibilidad para el <i>${userData.datetime}</i>.<br><br>¡Gracias por confiar en Fénix Legal Group!`);
     
     // Change input placeholder
     if(chatInput) {
