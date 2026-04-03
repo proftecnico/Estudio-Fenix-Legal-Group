@@ -1,4 +1,3 @@
-// state
 let isChatOpen = false;
 let chatStep = 0;
 let userData = {
@@ -8,10 +7,8 @@ let userData = {
     datetime: ""
 };
 
-// Target email for FormSubmit (This can be modified by the user later)
-const TARGET_EMAIL = "consultas@fenixlegal.com"; 
+const TARGET_EMAIL = "consultas@legalfenix.com";
 
-// DOM Elements
 const chatWindow = document.getElementById("chat-window");
 const chatLauncher = document.getElementById("chat-launcher");
 const chatMessages = document.getElementById("chat-messages");
@@ -19,11 +16,11 @@ const chatInput = document.getElementById("chat-input");
 const sendBtn = document.getElementById("chat-send-btn");
 const notifBadge = document.querySelector(".notification-badge");
 
-// Initialize on load
 document.addEventListener("DOMContentLoaded", () => {
-    // Basic setup if needed later
+    initMobileMenu();
+    initNavScroll();
+    initFileInput();
     
-    // Add event listeners
     chatInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter" && !sendBtn.disabled) {
             handleUserInput();
@@ -35,14 +32,68 @@ document.addEventListener("DOMContentLoaded", () => {
             handleUserInput();
         }
     });
-
-    // Auto trigger first msg logic setup
-    setupChatLogic();
 });
 
-// Toggle visibility
+function initMobileMenu() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".nav");
+    
+    if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            nav.classList.toggle("active");
+        });
+        
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", () => {
+                menuToggle.classList.remove("active");
+                nav.classList.remove("active");
+            });
+        });
+    }
+}
+
+function initNavScroll() {
+    const navLinks = document.querySelectorAll(".nav-link");
+    
+    window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY + 150;
+        
+        document.querySelectorAll("section[id]").forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute("id");
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${sectionId}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    });
+}
+
+function initFileInput() {
+    const fileInput = document.getElementById("cv");
+    const fileName = document.getElementById("file-name");
+    
+    if (fileInput && fileName) {
+        fileInput.addEventListener("change", () => {
+            if (fileInput.files.length > 0) {
+                fileName.textContent = fileInput.files[0].name;
+            } else {
+                fileName.textContent = "Elegí un archivo o arrastralo aquí";
+            }
+        });
+    }
+}
+
 window.toggleChat = function() {
     isChatOpen = !isChatOpen;
+    
     if (isChatOpen) {
         chatWindow.classList.remove("hidden");
         chatLauncher.classList.add("active");
@@ -58,82 +109,71 @@ window.toggleChat = function() {
     }
 };
 
-// Flow Control
-function setupChatLogic() {
-    // Initial setup, ready to start when opened
-}
-
 function startConversation() {
-    appendBotMessage("Fénix Legal Group");
+    appendBotMessage("<strong>Bienvenido a LegalFénix</strong><br><br>Somos un equipo jurídico comprometido con la excelencia y los resultados. ¿En qué podemos ayudarte hoy?");
     setTimeout(() => {
         appendBotMessage("¿Cuál es su apellido y nombre completo?");
-        enableInput("text", "Su apellido y nombre...");
+        enableInput("text", "Su nombre completo...");
         chatStep = 1;
-    }, 1000);
+    }, 800);
 }
 
 function handleUserInput() {
     let val = chatInput.value.trim();
     
-    // In case of special date-time pickers replacing the input
-    const datetimeInput = document.getElementById('chat-datetime');
+    const datetimeInput = document.getElementById("chat-datetime");
     
     if (chatStep === 4 && datetimeInput) {
-        if(!datetimeInput.value){
-           appendBotMessage("Por favor, seleccione una fecha y hora válidas.");
-           return;
+        if (!datetimeInput.value) {
+            appendBotMessage("Por favor, seleccione una fecha y hora válida.");
+            return;
         }
         val = datetimeInput.value.replace(" ", " a las ");
     } else if (!val) {
         return;
     }
     
-    // Clear input
     chatInput.value = "";
     disableInput();
     
-    let processedVal = val;
-    appendUserMessage(processedVal);
-
+    appendUserMessage(val);
     showTypingIndicator();
-
+    
     setTimeout(() => {
         removeTypingIndicator();
-        processStep(processedVal);
-    }, 1200);
+        processStep(val);
+    }, 1000);
 }
 
 function processStep(value) {
     switch (chatStep) {
         case 1:
             userData.name = value;
-            appendBotMessage("Indique su número de teléfono y/o correo electrónico");
-            enableInput("text", "Su teléfono o email...");
+            appendBotMessage("Gracias, " + value.split(" ")[0] + ". Ahora indíquenos su número de teléfono y/o correo electrónico para contactarlo.");
+            enableInput("text", "Teléfono o email...");
             chatStep = 2;
             break;
         case 2:
             userData.contact = value;
-            appendBotMessage("¡Gracias por confiar en Fénix Legal Group!<br><br>¿Cuál es su motivo de consulta: laboral despidos, laboral ART, familia, penal, accidente de tránsito, contratos, compra y venta de inmueble, etc.?");
-            enableInput("text", "Motivo de la consulta...");
+            appendBotMessage("Perfecto. ¿Cuál es el motivo de su consulta?<br><br><em>Por ejemplo: laboral, familia, penal, inmobiliario, accidentes, contratos, etc.</em>");
+            enableInput("text", "Motivo de consulta...");
             chatStep = 3;
             break;
         case 3:
             userData.reason = value;
-            appendBotMessage("Entendido. Por favor, seleccione la fecha y hora de preferencia para su entrevista.");
+            appendBotMessage("Entendido. Para finalizar, seleccione la fecha y hora de preferencia para su entrevista virtual o presencial.");
             enableCustomInput();
             chatStep = 4;
             break;
         case 4:
-            // Custom date process handled in handleUserInput
             userData.datetime = value;
-            appendBotMessage("Procesando su solicitud de entrevista...");
+            appendBotMessage("Procesando su solicitud...");
             chatStep = 5;
             submitToFormSubmit();
             break;
     }
 }
 
-// UI Helpers
 function appendBotMessage(text) {
     const div = document.createElement("div");
     div.className = "msg-bubble msg-bot";
@@ -145,14 +185,14 @@ function appendBotMessage(text) {
 function appendUserMessage(text) {
     const div = document.createElement("div");
     div.className = "msg-bubble msg-user";
-    div.innerText = text;
+    div.textContent = text;
     chatMessages.appendChild(div);
     scrollToBottom();
 }
 
 function showTypingIndicator() {
     const div = document.createElement("div");
-    div.className = "msg-bubble msg-bot typing-indicator-container";
+    div.className = "msg-bubble msg-bot";
     div.id = "typing-id";
     div.innerHTML = `
         <div class="typing-indicator">
@@ -176,28 +216,24 @@ function enableInput(type, placeholder) {
     chatInput.disabled = false;
     sendBtn.disabled = false;
     
-    // Remove custom UI if it existed
-    const customContainer = document.getElementById('custom-input-container');
+    const customContainer = document.getElementById("custom-input-container");
     if (customContainer) {
         customContainer.remove();
-        chatInput.style.display = 'block';
+        chatInput.style.display = "block";
     }
     
     chatInput.focus();
 }
 
 function enableCustomInput() {
-    // Hide standard input
-    chatInput.style.display = 'none';
+    chatInput.style.display = "none";
     chatInput.disabled = true;
     
-    // Create custom date time
-    const inputArea = document.getElementById('input-container');
+    const inputArea = document.getElementById("input-container");
     
-    // Remove old if exists
-    const old = document.getElementById('custom-input-container');
-    if(old) old.remove();
-
+    const old = document.getElementById("custom-input-container");
+    if (old) old.remove();
+    
     const container = document.createElement("div");
     container.id = "custom-input-container";
     container.className = "datetime-container";
@@ -207,8 +243,7 @@ function enableCustomInput() {
     
     inputArea.insertBefore(container, sendBtn);
     sendBtn.disabled = false;
-
-    // Initialize Flatpickr
+    
     flatpickr("#chat-datetime", {
         enableTime: true,
         dateFormat: "d/m/Y H:i",
@@ -217,7 +252,6 @@ function enableCustomInput() {
         maxTime: "17:00",
         disable: [
             function(date) {
-                // Return true to disable weekends
                 return (date.getDay() === 0 || date.getDay() === 6);
             }
         ],
@@ -235,53 +269,44 @@ function scrollToBottom() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Send Email logic
 async function submitToFormSubmit() {
-    // We send to FormSubmit using POST
-    // They will email TARGET_EMAIL
-    
     const formData = new FormData();
     formData.append("Nombre", userData.name);
     formData.append("Contacto", userData.contact);
     formData.append("Motivo", userData.reason);
     formData.append("Fecha_y_Hora_Solicitada", userData.datetime);
     
-    // Configure FormSubmit hidden fields logic
-    formData.append("_subject", "Nueva Solicitud de Entrevista - Fenix Legal");
+    formData.append("_subject", "Nueva Solicitud de Entrevista - LegalFénix");
     formData.append("_template", "table");
-    formData.append("_captcha", "false"); // Disable captcha for API call
-
+    formData.append("_captcha", "false");
+    
     try {
         const response = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
             method: "POST",
             body: formData,
             headers: {
-                // 'Content-Type': 'application/json' // Omit for FormData
-                'Accept': 'application/json'
+                "Accept": "application/json"
             }
         });
         
         if (response.ok) {
             showSuccessMessage();
         } else {
-            console.error(response);
             showErrorMessage();
         }
     } catch (e) {
-        console.error(e);
         showErrorMessage();
     }
 }
 
 function showSuccessMessage() {
     chatStep = 6;
-    appendBotMessage(`<b>¡Entrevista agendada con éxito!</b><br>Hemos enviado los detalles a nuestra firma. Nos pondremos en contacto a la brevedad para confirmar la disponibilidad para el <i>${userData.datetime}</i>.<br><br>¡Gracias por confiar en Fénix Legal Group!`);
+    appendBotMessage(`<strong>¡Entrevista agendada con éxito!</strong><br><br>Hemos recibido su solicitud. Nos comunicaremos a la brevedad para confirmar la disponibilidad para el <strong>${userData.datetime}</strong>.<br><br>Gracias por confiar en LegalFénix.`);
     
-    // Change input placeholder
-    if(chatInput) {
-        chatInput.style.display = 'block';
-        const custom = document.getElementById('custom-input-container');
-        if(custom) custom.remove();
+    if (chatInput) {
+        chatInput.style.display = "block";
+        const custom = document.getElementById("custom-input-container");
+        if (custom) custom.remove();
         
         chatInput.placeholder = "Conversación finalizada";
         disableInput();
@@ -289,12 +314,12 @@ function showSuccessMessage() {
 }
 
 function showErrorMessage() {
-    appendBotMessage("Hubo un error al procesar su solicitud. Por favor, intente enviando un correo directamente a info@fenixlegal.com. Disculpe las molestias.");
+    appendBotMessage("Hubo un error al procesar su solicitud. Por favor, contáctenos directamente a <strong>consultas@legalfenix.com</strong>.<br>Disculpe las molestias.");
     
-    if(chatInput) {
-        chatInput.style.display = 'block';
-        const custom = document.getElementById('custom-input-container');
-        if(custom) custom.remove();
+    if (chatInput) {
+        chatInput.style.display = "block";
+        const custom = document.getElementById("custom-input-container");
+        if (custom) custom.remove();
         chatInput.placeholder = "Error en el envío";
         disableInput();
     }
