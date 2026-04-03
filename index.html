@@ -3,137 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fenix Legal | Estudio Jurídico</title>
-    <meta name="description" content="Fenix Legal Abogados. Excelencia y compromiso en representación legal. Agende su entrevista hoy mismo.">
+    <title>LegalFénix | Estudio Jurídico</title>
+    <meta name="description" content="LegalFénix - Estudio jurídico comprometido con la excelencia. Defendemos tus derechos con estrategia y determinación.">
+    <link rel="icon" type="image/jpeg" href="imagenes/Logo.jpeg">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Flatpickr for Date/Time -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="491460715_564298499509133_7049928877030827484_n.jpg" alt="Fénix Legal Logo" class="logo-img">
-                <span class="logo-text">Fénix Legal</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto" class="btn-primary-outline">Contacto</a></li>
-            </ul>
-            <div class="mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+    <header class="header">
+        <div class="header-container">
+            <a href="#inicio" class="logo">
+                <img src="imagenes/Logo.jpeg" alt="LegalFénix Logo" class="logo-img">
+                <span class="logo-text">Legal<span class="highlight">Fénix</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#empleo" class="nav-link">Empleo</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="#contacto" class="btn-header">
+                <i class="fa-brands fa-whatsapp"></i> Contactar
+            </a>
+            <button class="menu-toggle" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <div class="hero-overlay"></div>
+        <div class="hero-video-wrapper">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
         <div class="hero-content">
-            <div class="badge fade-in-up">Excelencia y Compromiso</div>
-            <h1 class="fade-in-up delay-1">Defendemos tus derechos con <span class="highlight">estrategia y determinación</span>.</h1>
-            <p class="fade-in-up delay-2">Un equipo de expertos legales listos para representarte. Litigios, asesoría corporativa y resolución de conflictos.</p>
-            <div class="hero-buttons fade-in-up delay-3">
-                <button class="btn-primary" onclick="window.toggleChat()">Agendar Entrevista <i class="fa-solid fa-calendar-check"></i></button>
-                <a href="#servicios" class="btn-secondary">Nuestros Servicios</a>
+            <h1>Defendemos bien<br><span class="highlight">tus intereses.</span></h1>
+            <p>Somos LegalFénix. Utilizamos el derecho para construir, defender y proyectar el futuro de quienes confían en nosotros.</p>
+            <div class="hero-actions">
+                <a href="#contacto" class="btn-primary">
+                    <i class="fa-solid fa-calendar-check"></i> Agendar una reunión
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="section-label">| Conócenos</div>
+            <h2>¿Quiénes Somos?</h2>
+            
+            <div class="about-grid">
+                <div class="about-main">
+                    <p class="about-lead">Somos <strong>LegalFénix</strong>, un equipo jurídico que concibe el derecho como una herramienta de construcción, protección y crecimiento.</p>
+                    <p>Nuestro nombre no es casual: representa la resiliencia, la capacidad de levantarse frente a la adversidad y transformar situaciones complejas en nuevas oportunidades.</p>
+                    <p>Trabajamos con un compromiso real con cada caso, entendiendo que detrás de cada consulta hay una historia personal que requiere atención, estrategia y responsabilidad.</p>
+                    <p>No ofrecemos respuestas estándar: analizamos, diseñamos y ejecutamos soluciones jurídicas con criterio técnico y enfoque humano.</p>
+                </div>
+                <div class="about-pillars">
+                    <div class="pillar">
+                        <div class="pillar-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="pillar-content">
+                            <h4>Responsabilidad Profesional</h4>
+                            <p>Análisis riguroso y ética en cada caso</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <div class="pillar-content">
+                            <h4>Cercanía con el Cliente</h4>
+                            <p>Comunicación directa y transparente</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="pillar-content">
+                            <h4>Eficacia en Resultados</h4>
+                            <p>Soluciones concretas y exitosas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-quote">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p>En LegalFénix no solo ejercemos el derecho: lo utilizamos para construir, defender y proyectar el futuro de quienes confían en nosotros.</p>
+            </div>
+        </div>
+    </section>
+
     <section id="servicios" class="services">
-        <div class="section-header">
-            <h2>Áreas de Práctica</h2>
-            <p>Especialistas en diversas ramas del derecho para brindarle una solución integral.</p>
-        </div>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
-                <h3>Derecho Corporativo</h3>
-                <p>Asesoría integral para empresas, contratos, sociedades comerciales y compliance.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon-wrapper"><i class="fa-solid fa-gavel"></i></div>
-                <h3>Litigios y Resolución</h3>
-                <p>Representación judicial estratégica en conflictos civiles y comerciales.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
-                <h3>Derecho de Familia</h3>
-                <p>Manejo sensible y profesional de divorcios, sucesiones y acuerdos familiares.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon-wrapper"><i class="fa-solid fa-person-digging"></i></div>
-                <h3>Derecho Laboral</h3>
-                <p>Defensa de derechos laborales, indemnizaciones, y asesoría preventiva a empleadores.</p>
+        <div class="container">
+            <div class="section-label">| Áreas de Práctica</div>
+            <h2>Asesoría jurídica a tu medida<br>con compromiso y eficiencia.</h2>
+            <p class="section-intro">Nuestros profesionalesbran un amplio abanico de servicios jurídicos bajo los más altos estándares de eficiencia.</p>
+            
+            <div class="services-grid">
+                <div class="service-item" data-service="inmobiliario">
+                    <div class="service-icon"><i class="fa-solid fa-building"></i></div>
+                    <h3>Asesoramiento Jurídico Inmobiliario</h3>
+                    <p>Seguridad en cada operación inmobiliaria. En LegalFénix te brindamos seguridad en cada operación inmobiliaria. Sabemos que una mala decisión puede generar conflictos costosos, por eso intervenimos desde el inicio con un enfoque preventivo, claro y estratégico.</p>
+                    <ul class="service-features">
+                        <li>Compraventas, alquileres, boletos y cesiones</li>
+                        <li>Desarrollos inmobiliarios</li>
+                        <li>Estudios de títulos y verificaciones registrales</li>
+                        <li>Análisis de riesgos para operaciones sólidas</li>
+                        <li>Representación para particulares e inversores</li>
+                    </ul>
+                    <p class="service-closing"><strong>Invertir bien empieza por estar bien asesorado.</strong> Nosotros cuidamos tu patrimonio.</p>
+                </div>
+
+                <div class="service-item" data-service="penal">
+                    <div class="service-icon"><i class="fa-solid fa-gavel"></i></div>
+                    <h3>Derecho Penal</h3>
+                    <p>Defensa técnica sólida y eficaz. En LegalFénix actuamos con rapidez, estrategia y absoluta reserva frente a situaciones penales. Sabemos que está en juego tu libertad, tu patrimonio y tu reputación.</p>
+                    <ul class="service-features">
+                        <li>Defensa en todas las etapas del proceso penal</li>
+                        <li>Representación desde la investigación hasta el juicio</li>
+                        <li>Pleno ejercicio del derecho de defensa</li>
+                        <li>Representación de víctimas con reparación integral</li>
+                        <li>Intervención ante fiscalías y tribunales</li>
+                    </ul>
+                    <p class="service-closing"><strong>Cuando todo está en riesgo, respondemos con firmeza, precisión y defensa real.</strong></p>
+                </div>
+
+                <div class="service-item" data-service="corporativo">
+                    <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Derecho Corporativo</h3>
+                    <p>Asesoría integral para empresas. Brindamos soporte jurídico integral para empresas de todos los tamaños. Desde la constitución hasta la gestión diaria, acompañamos cada decisión empresarial.</p>
+                    <ul class="service-features">
+                        <li>Constitución y reorganización de sociedades</li>
+                        <li>Contratos comerciales y acuerdos</li>
+                        <li>Compliance corporativo</li>
+                        <li>Fusiones y adquisiciones</li>
+                        <li>Resolución de conflictos comerciales</li>
+                    </ul>
+                    <p class="service-closing"><strong>Protegemos tu empresa para que puedas concentrarte en crecer.</strong></p>
+                </div>
+
+                <div class="service-item" data-service="familia">
+                    <div class="service-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Derecho de Familia</h3>
+                    <p>Manejo sensible y profesional. Tratamos los asuntos familiares con la delicadeza y profesionalismo que merecen. Entendemos que detrás de cada caso hay emociones y relaciones importantes.</p>
+                    <ul class="service-features">
+                        <li>Divorcios y separaciones</li>
+                        <li>Custodia y régimen de visitas</li>
+                        <li>Sucesiones y testamentarias</li>
+                        <li>Acuerdos prenupciales y postnupciales</li>
+                        <li>Mediación familiar</li>
+                    </ul>
+                    <p class="service-closing"><strong>Acompañamos tu tranquilidad en los momentos más importantes.</strong></p>
+                </div>
+
+                <div class="service-item" data-service="laboral">
+                    <div class="service-icon"><i class="fa-solid fa-person-digging"></i></div>
+                    <h3>Derecho Laboral</h3>
+                    <p>Defensa de derechos laborales. Defendemos los derechos de trabajadores y empleadores con experiencia y dedicación. Ya sea que necesites representación en un despido o asesoría preventiva.</p>
+                    <ul class="service-features">
+                        <li>Despidos e indemnizaciones</li>
+                        <li>Accidentes laborales y ART</li>
+                        <li>Acoso laboral</li>
+                        <li>Negociaciones colectivas</li>
+                        <li>Asesoría preventiva para empleadores</li>
+                    </ul>
+                    <p class="service-closing"><strong>Tus derechos laborales merecen protección experta.</strong></p>
+                </div>
+
+                <div class="service-item" data-service="accidentes">
+                    <div class="service-icon"><i class="fa-solid fa-car-crash"></i></div>
+                    <h3>Accidentes de Tránsito</h3>
+                    <p>Reclamá lo que te corresponde. Si sufriste un accidente de tránsito, tienes derecho a una compensación justa. Nuestro equipo te acompaña en todo el proceso.</p>
+                    <ul class="service-features">
+                        <li>Reclamo de daños y perjuicios</li>
+                        <li>Cobertura de seguro</li>
+                        <li>Daños físicos y psicológicos</li>
+                        <li>Lucro cesante</li>
+                        <li>Representación en juicio</li>
+                    </ul>
+                    <p class="service-closing"><strong>No dejes que el seguro te indemalice menos de lo que mereces.</strong></p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA / About Section -->
-    <section id="nosotros" class="about-cta">
-        <div class="cta-content">
-            <h2>La experiencia hace la diferencia</h2>
-            <p>En Fénix Legal Abogados, entendemos que cada caso es único. Nuestro enfoque personalizado y nuestra dedicación incansable aseguran que sus intereses estén siempre protegidos.</p>
-            <button class="btn-primary-outline" onclick="window.toggleChat()">Hable con un profesional</button>
+    <section id="empleo" class="careers">
+        <div class="careers-bg"></div>
+        <div class="container">
+            <div class="careers-wrapper">
+                <div class="careers-content">
+                    <div class="section-label light">| Trabaja con Nosotros</div>
+                    <h2>¿Querés ser parte<br>de LegalFénix?</h2>
+                    <p>Nuestro estudio ha alcanzado una posición de liderazgo gracias al talento y profesionalismo de nuestros abogados, reconocidos por manejar transacciones y litigios complejos.</p>
+                    <p>Nos destacamos por ofrecer soluciones innovadoras a los desafíos de la nueva economía. Este éxito ha posicionado a LegalFénix como la mejor opción para jóvenes abogados que desean desarrollar su carrera en un estudio de primer nivel.</p>
+                    <a href="#postular" class="btn-primary">
+                        <i class="fa-solid fa-paper-plane"></i> Quiero ser parte
+                    </a>
+                </div>
+                <div class="careers-image">
+                    <img src="imagenes/Logo 2.jpeg" alt="LegalFénix">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <div class="logo">
-                    <img src="491460715_564298499509133_7049928877030827484_n.jpg" alt="Fénix Legal Logo" class="logo-img">
-                    <span class="logo-text" style="color:white;">Fénix Legal</span>
+    <section id="postular" class="apply">
+        <div class="container">
+            <div class="section-label">| Postulate</div>
+            <h2>Envianos tu CV</h2>
+            <p class="section-intro">Completá el formulario y nos pondremos en contacto con vos.</p>
+            
+            <form id="apply-form" class="apply-form" action="https://formsubmit.co/ajax/consultas@legalfenix.com" method="POST">
+                <input type="hidden" name="_subject" value="Nueva Postulación - LegalFénix">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="apellido-nombre">Apellido y Nombre *</label>
+                        <input type="text" id="apellido-nombre" name="Apellido_Nombre" required placeholder="Tu nombre completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="Email" required placeholder="tu@email.com">
+                    </div>
                 </div>
-                <p>Su estudio jurídico de confianza. Resultados reales con vocación de servicio.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p><i class="fa-solid fa-envelope"></i> info@fenixlegal.com</p>
-                <p><i class="fa-solid fa-phone"></i> +54 11 1234-5678</p>
-                <p><i class="fa-solid fa-location-dot"></i> Av. Corrientes 1234, CABA</p>
-            </div>
-            <div class="footer-col">
-                <h4>Síganos</h4>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/fenixlegal.abogados/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono *</label>
+                        <input type="tel" id="telefono" name="Telefono" required placeholder="+54 11 XXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="area">Área de interés *</label>
+                        <select id="area" name="Area_Interes" required>
+                            <option value="">Seleccioná un área</option>
+                            <option value="Derecho Penal">Derecho Penal</option>
+                            <option value="Derecho Laboral">Derecho Laboral</option>
+                            <option value="Derecho de Familia">Derecho de Familia</option>
+                            <option value="Derecho Corporativo">Derecho Corporativo</option>
+                            <option value="Derecho Inmobiliario">Derecho Inmobiliario</option>
+                            <option value="Accidentes de Tránsito">Accidentes de Tránsito</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group full">
+                    <label for="experiencia">Experiencia profesional</label>
+                    <textarea id="experiencia" name="Experiencia" rows="4" placeholder="Contanos sobre tu experiencia laboral, formación académica y cualquier otro dato relevante..."></textarea>
+                </div>
+                
+                <div class="form-group full">
+                    <label for="cv">Adjuntar CV (PDF) - Opcional</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="cv" name="CV" accept=".pdf" class="file-input">
+                        <label for="cv" class="file-label">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span id="file-name">Elegí un archivo o arrastralo aquí</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Postulación
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="section-label light">| Contacto</div>
+                    <h2>Hablemos de tu caso</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:consultas@legalfenix.com">consultas@legalfenix.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <span class="contact-label">Teléfono</span>
+                            <a href="tel:+541112345678">+54 11 1234-5678</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div>
+                            <span class="contact-label">WhatsApp</span>
+                            <a href="https://wa.me/541112345678">+54 11 1234-5678</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <span class="contact-label">Dirección</span>
+                            <span>Av. Corrientes 1234, CABA</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <span class="contact-label">Horarios</span>
+                            <span>Lun - Vie: 10:00 - 17:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/fenixlegal.abogados/" target="_blank" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/541112345678" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-cta">
+                    <div class="cta-card">
+                        <div class="cta-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <h3>¿Listo para comenzar?</h3>
+                        <p>Chateá con nuestro asistente virtual para agendar tu entrevista de manera rápida.</p>
+                        <button class="btn-primary" onclick="window.toggleChat()">
+                            <i class="fa-solid fa-comment-dots"></i> Agendar por Chat
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Fénix Legal Abogados. Todos los derechos reservados.</p>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#inicio" class="logo">
+                        <img src="imagenes/Logo.jpeg" alt="LegalFénix Logo" class="logo-img">
+                        <span class="logo-text">Legal<span class="highlight">Fénix</span></span>
+                    </a>
+                    <p>Estudio jurídico comprometido con la excelencia, la cercanía y los resultados concretos para cada cliente.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#empleo">Empleo</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Inmobiliario</a></li>
+                        <li><a href="#servicios">Penal</a></li>
+                        <li><a href="#servicios">Corporativo</a></li>
+                        <li><a href="#servicios">Familia</a></li>
+                        <li><a href="#servicios">Laboral</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fa-solid fa-envelope"></i> consultas@legalfenix.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +54 11 1234-5678</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Av. Corrientes 1234, CABA</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 LegalFénix. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Floating Chatbot Widget -->
     <div id="chat-widget" class="chat-widget">
-        <!-- Chat Launcher Button -->
-        <button id="chat-launcher" class="chat-launcher pulse-animation" onclick="toggleChat()">
-            <i class="fa-solid fa-comment-dots"></i>
+        <button id="chat-launcher" class="chat-launcher pulse-animation" onclick="toggleChat()" aria-label="Abrir chat">
+            <i class="fa-solid fa-comment-dots chat-icon"></i>
             <i class="fa-solid fa-xmark close-icon"></i>
             <span class="notification-badge">1</span>
         </button>
 
-        <!-- Chat Window -->
         <div id="chat-window" class="chat-window hidden">
             <div class="chat-header">
                 <div class="chat-header-info">
@@ -143,27 +423,22 @@
                         <span class="status-online">En línea</span>
                     </div>
                 </div>
-                <button class="minimize-btn" onclick="toggleChat()"><i class="fa-solid fa-chevron-down"></i></button>
+                <button class="minimize-btn" onclick="toggleChat()" aria-label="Minimizar"><i class="fa-solid fa-chevron-down"></i></button>
             </div>
             
-            <div id="chat-messages" class="chat-messages">
-                <!-- Messages will be injected here via JS -->
-            </div>
+            <div id="chat-messages" class="chat-messages"></div>
             
             <div class="chat-input-area">
                 <div id="input-container" class="input-container">
                     <input type="text" id="chat-input" placeholder="Escriba su mensaje..." autocomplete="off" disabled>
-                    <button id="chat-send-btn" disabled><i class="fa-solid fa-paper-plane"></i></button>
+                    <button id="chat-send-btn" disabled aria-label="Enviar"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Flatpickr Script -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-
-    <!-- Script Application -->
     <script src="app.js"></script>
 </body>
 </html>
