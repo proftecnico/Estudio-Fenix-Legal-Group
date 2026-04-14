@@ -7,7 +7,7 @@ let userData = {
     datetime: ""
 };
 
-const TARGET_EMAIL = "consultas@legalfenix.com";
+const TARGET_EMAIL = "info@legalfenix.com.ar";
 
 const chatWindow = document.getElementById("chat-window");
 const chatLauncher = document.getElementById("chat-launcher");
@@ -110,7 +110,7 @@ window.toggleChat = function() {
 };
 
 function startConversation() {
-    appendBotMessage("<strong>Bienvenido a LegalFénix</strong><br><br>Somos un equipo jurídico comprometido con la excelencia y los resultados. ¿En qué podemos ayudarte hoy?");
+    appendBotMessage("<strong>Bienvenido a FÉNIX LEGAL GROUP</strong><br><br>Somos un equipo jurídico comprometido con la excelencia y los resultados. ¿En qué podemos ayudarte hoy?");
     setTimeout(() => {
         appendBotMessage("¿Cuál es su apellido y nombre completo?");
         enableInput("text", "Su nombre completo...");
@@ -276,7 +276,7 @@ async function submitToFormSubmit() {
     formData.append("Motivo", userData.reason);
     formData.append("Fecha_y_Hora_Solicitada", userData.datetime);
     
-    formData.append("_subject", "Nueva Solicitud de Entrevista - LegalFénix");
+    formData.append("_subject", "Nueva Solicitud de Entrevista - FÉNIX LEGAL GROUP");
     formData.append("_template", "table");
     formData.append("_captcha", "false");
     
@@ -301,7 +301,7 @@ async function submitToFormSubmit() {
 
 function showSuccessMessage() {
     chatStep = 6;
-    appendBotMessage(`<strong>¡Entrevista agendada con éxito!</strong><br><br>Hemos recibido su solicitud. Nos comunicaremos a la brevedad para confirmar la disponibilidad para el <strong>${userData.datetime}</strong>.<br><br>Gracias por confiar en LegalFénix.`);
+    appendBotMessage(`<strong>¡Entrevista agendada con éxito!</strong><br><br>Hemos recibido su solicitud. Nos comunicaremos a la brevedad para confirmar la disponibilidad para el <strong>${userData.datetime}</strong>.<br><br>Gracias por confiar en FÉNIX LEGAL GROUP.`);
     
     if (chatInput) {
         chatInput.style.display = "block";
@@ -314,7 +314,7 @@ function showSuccessMessage() {
 }
 
 function showErrorMessage() {
-    appendBotMessage("Hubo un error al procesar su solicitud. Por favor, contáctenos directamente a <strong>consultas@legalfenix.com</strong>.<br>Disculpe las molestias.");
+    appendBotMessage("Hubo un error al procesar su solicitud. Por favor, contáctenos directamente a <strong>info@legalfenix.com.ar</strong>.<br>Disculpe las molestias.");
     
     if (chatInput) {
         chatInput.style.display = "block";
