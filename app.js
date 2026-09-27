@@ -123,7 +123,7 @@ function handleUserInput() {
     
     const datetimeInput = document.getElementById("chat-datetime");
     
-    if (chatStep === 4 && datetimeInput) {
+    if (chatStep === 5 && datetimeInput) {
         if (!datetimeInput.value) {
             appendBotMessage("Por favor, seleccione una fecha y hora válida.");
             return;
@@ -149,26 +149,37 @@ function processStep(value) {
     switch (chatStep) {
         case 1:
             userData.name = value;
-            appendBotMessage("Gracias, " + value.split(" ")[0] + ". Ahora indíquenos su número de teléfono y/o correo electrónico para contactarlo.");
-            enableInput("text", "Teléfono o email...");
+            appendBotMessage("Gracias, " + value.split(" ")[0] + ". Por favor, ingrese su correo electrónico (allí le enviaremos la confirmación):");
+            enableInput("email", "tu@email.com");
             chatStep = 2;
             break;
         case 2:
-            userData.contact = value;
-            appendBotMessage("Perfecto. ¿Cuál es el motivo de su consulta?<br><br><em>Por ejemplo: laboral, familia, penal, inmobiliario, accidentes, contratos, etc.</em>");
-            enableInput("text", "Motivo de consulta...");
+            if (!value.includes("@")) {
+                appendBotMessage("Por favor ingrese un correo electrónico válido (debe contener '@').");
+                enableInput("email", "tu@email.com");
+                return;
+            }
+            userData.email = value;
+            appendBotMessage("Perfecto. Indíquenos su número de teléfono de contacto:");
+            enableInput("tel", "Su número de teléfono...");
             chatStep = 3;
             break;
         case 3:
-            userData.reason = value;
-            appendBotMessage("Entendido. Para finalizar, seleccione la fecha y hora de preferencia para su entrevista virtual o presencial.");
-            enableCustomInput();
+            userData.phone = value;
+            appendBotMessage("Gracias. ¿Cuál es el motivo de su consulta?<br><br><em>Por ejemplo: laboral, familia, penal, inmobiliario, accidentes, contratos, etc.</em>");
+            enableInput("text", "Motivo de consulta...");
             chatStep = 4;
             break;
         case 4:
+            userData.reason = value;
+            appendBotMessage("Entendido. Para finalizar, seleccione la fecha y hora de preferencia para su entrevista virtual o presencial.");
+            enableCustomInput();
+            chatStep = 5;
+            break;
+        case 5:
             userData.datetime = value;
             appendBotMessage("Procesando su solicitud...");
-            chatStep = 5;
+            chatStep = 6;
             submitToFormSubmit();
             break;
     }
@@ -272,13 +283,15 @@ function scrollToBottom() {
 async function submitToFormSubmit() {
     const formData = new FormData();
     formData.append("Nombre", userData.name);
-    formData.append("Contacto", userData.contact);
+    formData.append("email", userData.email); // Obligatorio llamarlo 'email' para el autoresponse
+    formData.append("Telefono", userData.phone);
     formData.append("Motivo", userData.reason);
     formData.append("Fecha_y_Hora_Solicitada", userData.datetime);
     
     formData.append("_subject", "Nueva Solicitud de Entrevista - FÉNIX LEGAL GROUP");
     formData.append("_template", "table");
     formData.append("_captcha", "false");
+    formData.append("_autoresponse", "¡Hola! Hemos recibido tu solicitud de entrevista con éxito. Nos pondremos en contacto a la brevedad para confirmar la disponibilidad. \n\nSaludos,\nEl equipo de FÉNIX LEGAL GROUP");
     
     try {
         const response = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
